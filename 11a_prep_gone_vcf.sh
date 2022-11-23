@@ -1,0 +1,254 @@
+#!/bin/bash
+
+#SBATCH --job-name=gone_prep
+#SBATCH --partition=jrw0107_std
+#SBATCH -N 1
+#SBATCH -n 1
+#SBATCH -t 300:00:00
+#SBATCH --mail-type=END,FAIL
+#SBATCH --mail-user=avrilharder@gmail.com
+
+## J's queue: jrw0107_std
+
+##  Set username
+USER=avrilh
+
+## Set project name
+PROJ=kratroh_11_gone
+
+## Create a directory on /scratch
+mkdir /scratch/${USER}/${PROJ}/
+
+## Set permissions for directory
+chmod 700 /scratch/${USER}/${PROJ}/
+
+## cd into working scratch directory
+cd /scratch/${USER}/${PROJ}/
+
+## --------------------------------
+## Load modules 
+module load bcftools/1.11
+module load vcftools/0.1.17
+
+
+## --------------------------------
+## Copy VCF and contig name files - 
+## PLINK format needs chromosomes with just integer names :| and
+## GONE handles a max of 200 chromosomes, so going with the 200 largest contigs
+# cp /home/amh0254/krat_roh_analyses/03_gatk/krat_final_allfiltcontigs_all_samps.vcf.gz .
+# cp /home/amh0254/krat_roh_analyses/sample_lists/200_largest_contigs.txt .
+
+## Apply minQ filter and missingness (have enough starting SNPs to just require 
+## 0% missing) -- keep 200 largest contigs
+vcftools --gzvcf krat_final_allfiltcontigs_all_samps.vcf.gz \
+--recode --recode-INFO-all \
+--max-missing 1 \
+--minQ 20 \
+--chr JAHHPX010000002.1 \
+--chr JAHHPX010000095.1 \
+--chr JAHHPX010000054.1 \
+--chr JAHHPX010000140.1 \
+--chr JAHHPX010000043.1 \
+--chr JAHHPX010000096.1 \
+--chr JAHHPX010000001.1 \
+--chr JAHHPX010000032.1 \
+--chr JAHHPX010000024.1 \
+--chr JAHHPX010000009.1 \
+--chr JAHHPX010000783.1 \
+--chr JAHHPX010000019.1 \
+--chr JAHHPX010000069.1 \
+--chr JAHHPX010000145.1 \
+--chr JAHHPX010000098.1 \
+--chr JAHHPX010000081.1 \
+--chr JAHHPX010000157.1 \
+--chr JAHHPX010000125.1 \
+--chr JAHHPX010000018.1 \
+--chr JAHHPX010000051.1 \
+--chr JAHHPX010000108.1 \
+--chr JAHHPX010000147.1 \
+--chr JAHHPX010000297.1 \
+--chr JAHHPX010000089.1 \
+--chr JAHHPX010000094.1 \
+--chr JAHHPX010000006.1 \
+--chr JAHHPX010000234.1 \
+--chr JAHHPX010000163.1 \
+--chr JAHHPX010000017.1 \
+--chr JAHHPX010000175.1 \
+--chr JAHHPX010000197.1 \
+--chr JAHHPX010000003.1 \
+--chr JAHHPX010000365.1 \
+--chr JAHHPX010000042.1 \
+--chr JAHHPX010000004.1 \
+--chr JAHHPX010000115.1 \
+--chr JAHHPX010000053.1 \
+--chr JAHHPX010000039.1 \
+--chr JAHHPX010000207.1 \
+--chr JAHHPX010000092.1 \
+--chr JAHHPX010000026.1 \
+--chr JAHHPX010000301.1 \
+--chr JAHHPX010000138.1 \
+--chr JAHHPX010000050.1 \
+--chr JAHHPX010000187.1 \
+--chr JAHHPX010000066.1 \
+--chr JAHHPX010000015.1 \
+--chr JAHHPX010000136.1 \
+--chr JAHHPX010000075.1 \
+--chr JAHHPX010000178.1 \
+--chr JAHHPX010000137.1 \
+--chr JAHHPX010000179.1 \
+--chr JAHHPX010000273.1 \
+--chr JAHHPX010000030.1 \
+--chr JAHHPX010000034.1 \
+--chr JAHHPX010000173.1 \
+--chr JAHHPX010000436.1 \
+--chr JAHHPX010000076.1 \
+--chr JAHHPX010000228.1 \
+--chr JAHHPX010000141.1 \
+--chr JAHHPX010000215.1 \
+--chr JAHHPX010000046.1 \
+--chr JAHHPX010000174.1 \
+--chr JAHHPX010000085.1 \
+--chr JAHHPX010000264.1 \
+--chr JAHHPX010000045.1 \
+--chr JAHHPX010000289.1 \
+--chr JAHHPX010000021.1 \
+--chr JAHHPX010000121.1 \
+--chr JAHHPX010000102.1 \
+--chr JAHHPX010000169.1 \
+--chr JAHHPX010000241.1 \
+--chr JAHHPX010000067.1 \
+--chr JAHHPX010000210.1 \
+--chr JAHHPX010000073.1 \
+--chr JAHHPX010000422.1 \
+--chr JAHHPX010000231.1 \
+--chr JAHHPX010000107.1 \
+--chr JAHHPX010000158.1 \
+--chr JAHHPX010000669.1 \
+--chr JAHHPX010000023.1 \
+--chr JAHHPX010000052.1 \
+--chr JAHHPX010000118.1 \
+--chr JAHHPX010000288.1 \
+--chr JAHHPX010000070.1 \
+--chr JAHHPX010000233.1 \
+--chr JAHHPX010000295.1 \
+--chr JAHHPX010000266.1 \
+--chr JAHHPX010000190.1 \
+--chr JAHHPX010000312.1 \
+--chr JAHHPX010000227.1 \
+--chr JAHHPX010000012.1 \
+--chr JAHHPX010000078.1 \
+--chr JAHHPX010000363.1 \
+--chr JAHHPX010000307.1 \
+--chr JAHHPX010000516.1 \
+--chr JAHHPX010000203.1 \
+--chr JAHHPX010000242.1 \
+--chr JAHHPX010000463.1 \
+--chr JAHHPX010000148.1 \
+--chr JAHHPX010000230.1 \
+--chr JAHHPX010000063.1 \
+--chr JAHHPX010000335.1 \
+--chr JAHHPX010000262.1 \
+--chr JAHHPX010000205.1 \
+--chr JAHHPX010000188.1 \
+--chr JAHHPX010000329.1 \
+--chr JAHHPX010000219.1 \
+--chr JAHHPX010000152.1 \
+--chr JAHHPX010000583.1 \
+--chr JAHHPX010000057.1 \
+--chr JAHHPX010000240.1 \
+--chr JAHHPX010000059.1 \
+--chr JAHHPX010000127.1 \
+--chr JAHHPX010000201.1 \
+--chr JAHHPX010000080.1 \
+--chr JAHHPX010000129.1 \
+--chr JAHHPX010000183.1 \
+--chr JAHHPX010000038.1 \
+--chr JAHHPX010000258.1 \
+--chr JAHHPX010000287.1 \
+--chr JAHHPX010000193.1 \
+--chr JAHHPX010000274.1 \
+--chr JAHHPX010000119.1 \
+--chr JAHHPX010000112.1 \
+--chr JAHHPX010000421.1 \
+--chr JAHHPX010000225.1 \
+--chr JAHHPX010000276.1 \
+--chr JAHHPX010000360.1 \
+--chr JAHHPX010000036.1 \
+--chr JAHHPX010000155.1 \
+--chr JAHHPX010000097.1 \
+--chr JAHHPX010000126.1 \
+--chr JAHHPX010000110.1 \
+--chr JAHHPX010000239.1 \
+--chr JAHHPX010000116.1 \
+--chr JAHHPX010000083.1 \
+--chr JAHHPX010000449.1 \
+--chr JAHHPX010000362.1 \
+--chr JAHHPX010000105.1 \
+--chr JAHHPX010000065.1 \
+--chr JAHHPX010000268.1 \
+--chr JAHHPX010000235.1 \
+--chr JAHHPX010000010.1 \
+--chr JAHHPX010000505.1 \
+--chr JAHHPX010000199.1 \
+--chr JAHHPX010000351.1 \
+--chr JAHHPX010000143.1 \
+--chr JAHHPX010000165.1 \
+--chr JAHHPX010000298.1 \
+--chr JAHHPX010000327.1 \
+--chr JAHHPX010000191.1 \
+--chr JAHHPX010000040.1 \
+--chr JAHHPX010000309.1 \
+--chr JAHHPX010000047.1 \
+--chr JAHHPX010000185.1 \
+--chr JAHHPX010000008.1 \
+--chr JAHHPX010000483.1 \
+--chr JAHHPX010000306.1 \
+--chr JAHHPX010000263.1 \
+--chr JAHHPX010000278.1 \
+--chr JAHHPX010000333.1 \
+--chr JAHHPX010000420.1 \
+--chr JAHHPX010000457.1 \
+--chr JAHHPX010000504.1 \
+--chr JAHHPX010000547.1 \
+--chr JAHHPX010000159.1 \
+--chr JAHHPX010000064.1 \
+--chr JAHHPX010000166.1 \
+--chr JAHHPX010000361.1 \
+--chr JAHHPX010000344.1 \
+--chr JAHHPX010000029.1 \
+--chr JAHHPX010000532.1 \
+--chr JAHHPX010000162.1 \
+--chr JAHHPX010000480.1 \
+--chr JAHHPX010000387.1 \
+--chr JAHHPX010000014.1 \
+--chr JAHHPX010000130.1 \
+--chr JAHHPX010000499.1 \
+--chr JAHHPX010000373.1 \
+--chr JAHHPX010000506.1 \
+--chr JAHHPX010000172.1 \
+--chr JAHHPX010000250.1 \
+--chr JAHHPX010000279.1 \
+--chr JAHHPX010000284.1 \
+--chr JAHHPX010000200.1 \
+--chr JAHHPX010000299.1 \
+--chr JAHHPX010000144.1 \
+--chr JAHHPX010000134.1 \
+--chr JAHHPX010000214.1 \
+--chr JAHHPX010000599.1 \
+--chr JAHHPX010000355.1 \
+--chr JAHHPX010000386.1 \
+--chr JAHHPX010000440.1 \
+--chr JAHHPX010000481.1 \
+--chr JAHHPX010000487.1 \
+--chr JAHHPX010000033.1 \
+--chr JAHHPX010000323.1 \
+--chr JAHHPX010000529.1 \
+--chr JAHHPX010000304.1 \
+--out krat_gone_filt
+
+## Rename chromosomes
+bcftools annotate \
+--rename-chrs 200_largest_contigs.txt \
+-o krat_gone_filt_integerchrnames.vcf.gz \
+-O z \
+krat_gone_filt.recode.vcf
