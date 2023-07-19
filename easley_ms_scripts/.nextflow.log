@@ -1,0 +1,39 @@
+Jul-19 15:15:42.970 [main] DEBUG nextflow.cli.Launcher - $> nextflow run nf-core/methylseq --input data/krat_ms_samplesheet.csv --outdir results --max_cpus 2 --fasta /scratch/avrilh/kratroh_01_assembindex/dspec_genbank_assem.fa -profile singularity
+Jul-19 15:15:43.044 [main] INFO  nextflow.cli.CmdRun - N E X T F L O W  ~  version 23.04.2
+Jul-19 15:15:43.069 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/home/amh0254/.nextflow/plugins; core-plugins: nf-amazon@1.16.2,nf-azure@1.0.1,nf-codecommit@0.1.4,nf-console@1.0.5,nf-ga4gh@1.0.5,nf-google@1.7.3,nf-tower@1.5.12,nf-wave@0.8.3
+Jul-19 15:15:44.645 [main] INFO  org.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Jul-19 15:15:44.646 [main] INFO  org.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Jul-19 15:15:44.649 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.4.1 in 'deployment' mode
+Jul-19 15:15:44.677 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Jul-19 15:15:44.691 [main] DEBUG nextflow.scm.ProviderConfig - Using SCM config path: /home/amh0254/.nextflow/scm
+Jul-19 15:15:45.843 [main] DEBUG nextflow.scm.AssetManager - Git config: /home/amh0254/.nextflow/assets/nf-core/methylseq/.git/config; branch: master; remote: origin; url: https://github.com/nf-core/methylseq.git
+Jul-19 15:15:45.863 [main] DEBUG nextflow.scm.RepositoryFactory - Found Git repository result: [RepositoryFactory]
+Jul-19 15:15:45.875 [main] DEBUG nextflow.scm.AssetManager - Git config: /home/amh0254/.nextflow/assets/nf-core/methylseq/.git/config; branch: master; remote: origin; url: https://github.com/nf-core/methylseq.git
+Jul-19 15:15:46.825 [main] DEBUG nextflow.config.ConfigBuilder - Found config base: /home/amh0254/.nextflow/assets/nf-core/methylseq/nextflow.config
+Jul-19 15:15:46.826 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /home/amh0254/.nextflow/assets/nf-core/methylseq/nextflow.config
+Jul-19 15:15:46.838 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `singularity`
+Jul-19 15:15:48.260 [main] DEBUG nextflow.config.ConfigBuilder - Available config profiles: [cfc_dev, ifb_core, test_ci, denbi_qbic, alice, mjolnir_globe, uppmax, incliva, uge, rosalind_uge, dev, lugh, unibe_ibu, vai, czbiohub_aws, jax, ccga_med, scw, tigem, tubingen_apg, google, ipop_up, googlels, eddie, medair, biowulf, apptainer, bi, bigpurple, sbc_sharc, adcra, cedars, vsc_kul_uhasselt, pawsey_nimbus, ucl_myriad, utd_ganymede, charliecloud, icr_davros, ceres, munin, arm, rosalind, hasta, cfc, uzh, ebi_codon_slurm, ebc, ku_sund_dangpu, ccga_dx, crick, marvin, biohpc_gen, shifter, mana, mamba, wehi, awsbatch, imperial, maestro, genotoul, abims, janelia, nu_genomics, googlebatch, oist, sahmri, mpcdf, leicester, vsc_ugent, sage, cambridge, podman, ebi_codon, cheaha, xanadu, test, computerome, seg_globe, sanger, dkfz, pasteur, test_full, azurebatch, hki, crukmi, docker, engaging, gis, hypatia, psmn, eva, fgcz, conda, crg, singularity, uw_hyak_pedslabs, prince, utd_sysbio, debug, genouest, cbe, phoenix, gitpod, seawulf, fub_curta, uct_hpc, aws_tower, binac]
+Jul-19 15:15:48.299 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 from script declararion
+Jul-19 15:15:48.300 [main] INFO  nextflow.cli.CmdRun - Launching `https://github.com/nf-core/methylseq` [amazing_pesquet] DSL2 - revision: 81f989c93e [master]
+Jul-19 15:15:48.305 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins declared=[nf-amazon@1.16.2]
+Jul-19 15:15:48.305 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Jul-19 15:15:48.305 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[nf-amazon@1.16.2]
+Jul-19 15:15:48.305 [main] DEBUG nextflow.plugin.PluginUpdater - Installing plugin nf-amazon version: 1.16.2
+Jul-19 15:15:49.715 [main] INFO  org.pf4j.AbstractPluginManager - Plugin 'nf-amazon@1.16.2' resolved
+Jul-19 15:15:49.715 [main] INFO  org.pf4j.AbstractPluginManager - Start plugin 'nf-amazon@1.16.2'
+Jul-19 15:15:50.578 [main] DEBUG nextflow.plugin.BasePlugin - Plugin started nf-amazon@1.16.2
+Jul-19 15:15:50.591 [main] DEBUG nextflow.file.FileHelper - > Added 'S3FileSystemProvider' to list of installed providers [s3]
+Jul-19 15:15:50.598 [main] DEBUG nextflow.secret.LocalSecretsProvider - Secrets store: /home/amh0254/.nextflow/secrets/store.json
+Jul-19 15:15:50.600 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@216f01] - activable => nextflow.secret.LocalSecretsProvider@216f01
+Jul-19 15:15:50.703 [main] DEBUG nextflow.Session - Session UUID: b0b9294d-87ff-4a81-af90-599ae4d5fea4
+Jul-19 15:15:50.703 [main] DEBUG nextflow.Session - Run name: amazing_pesquet
+Jul-19 15:15:50.703 [main] DEBUG nextflow.Session - Executor pool size: 2
+Jul-19 15:15:50.711 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=10; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
+Jul-19 15:15:50.748 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 23.04.2 build 5870
+  Created: 08-06-2023 08:29 UTC (03:29 CDT)
+  System: Linux 3.10.0-1160.59.1.el7.x86_64
+  Runtime: Groovy 3.0.16 on Java HotSpot(TM) 64-Bit Server VM 15.0.1+9-18
+  Encoding: UTF-8 (UTF-8)
+  Process: 278498@node205 [172.16.2.55]
+  CPUs: 2 - Mem: 78.1 GB (77.7 GB) - Swap: 0 (0)

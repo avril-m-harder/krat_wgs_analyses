@@ -33,6 +33,7 @@ module load singularity/3.8.4
 ## --------------------------------
 ## Download test data
 
+mkdir /scratch/${USER}/${DIR}/
 mkdir /scratch/${USER}/${DIR}/${PROJ1}/
 cd /scratch/${USER}/${DIR}/${PROJ1}/
 
@@ -51,23 +52,25 @@ nextflow run nf-core/methylseq \
 --outdir results \
 --max_cpus 2 \
 --fasta /scratch/avrilh/kratroh_01_assembindex/dspec_genbank_assem.fa \
+--save_reference \
 -profile singularity
 
 
 ## run bwameth test (don't think this works -- issue with samtools faidx step)
-mkdir /scratch/${USER}/${DIR}/${PROJ2}/
-cd /scratch/${USER}/${DIR}/${PROJ2}/
-
-mkdir results
-mkdir data
-cp /scratch/${USER}/${DIR}/${PROJ1}/data/* ./data/
-
-nextflow run nf-core/methylseq \
---input data/krat_ms_samplesheet.csv \
---outdir results \
---max_cpus 2 \
---aligner bwameth \
---fasta /scratch/avrilh/kratroh_01_assembindex/dspec_genbank_assem.fa \
--profile singularity
+# mkdir /scratch/${USER}/${DIR}/${PROJ2}/
+# cd /scratch/${USER}/${DIR}/${PROJ2}/
+# 
+# mkdir results
+# mkdir data
+# cp /scratch/${USER}/${DIR}/${PROJ1}/data/* ./data/
+# 
+# nextflow run nf-core/methylseq \
+# --input data/krat_ms_samplesheet.csv \
+# --outdir results \
+# --max_cpus 2 \
+# --aligner bwameth \
+# --fasta /scratch/avrilh/kratroh_01_assembindex/dspec_genbank_assem.fa \
+# --save_reference \
+# -profile singularity
 
 conda deactivate

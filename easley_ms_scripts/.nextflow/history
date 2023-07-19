@@ -1,0 +1,1 @@
+2023-07-19 15:15:52	-	amazing_pesquet	-	81f989c93e866a9b0bd0d9584e077b9b8f78affe	b0b9294d-87ff-4a81-af90-599ae4d5fea4	nextflow run nf-core/methylseq --input data/krat_ms_samplesheet.csv --outdir results --max_cpus 2 --fasta /scratch/avrilh/kratroh_01_assembindex/dspec_genbank_assem.fa -profile singularity
