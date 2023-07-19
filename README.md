@@ -16,6 +16,5 @@
 
 
 #### Files
-* \*_sra_list.txt: Accession numbers for SRA read downloads.
+* sample names file probably
 
-* filtered_contigs.list: List of contigs >= 100 kb, excluding contigs likely originating from sex chromosomes.
