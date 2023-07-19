@@ -1,6 +1,6 @@
-## easley_krat_wgs_analyses
+## krat_wgs_analyses
 
-### Scripts and files associated with whole-genome and Methyl-Seq data analyses in *Dipodomys spectabilis*.
+### Scripts and files associated with whole-genome and Methyl-Seq data analyses in *Dipodomys spectabilis*. Divided by sequencing technology (WGS and Methyl-Seq) and run location (Easley HPC cluster and local)
 
 #### WGS scripts
 * 01a_read_qc_trimming.sh: 
