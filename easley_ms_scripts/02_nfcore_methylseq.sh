@@ -53,6 +53,7 @@ nextflow run nf-core/methylseq \
 --max_cpus 2 \
 --fasta /scratch/avrilh/kratroh_01_assembindex/dspec_genbank_assem.fa \
 --save_reference \
+--resume \
 -profile singularity
 
 
