@@ -1,0 +1,8 @@
+**/archive/**
+**/script_stdouts/**
+slurm*
+makefile
+*.txt
+.DS_Store
+**/figures_output/**
+
