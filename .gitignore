@@ -6,3 +6,4 @@ makefile
 .DS_Store
 **/figures_output/**
 *.nextflow*
+**/.nextflow/**
