@@ -3,8 +3,7 @@
 #SBATCH --job-name=methylseq
 #SBATCH --partition=jrw0107_std 
 #SBATCH -N 1
-#SBATCH -n 8
-#SBATCH --mem=80000
+#SBATCH -n 1
 #SBATCH -t 300:00:00
 #SBATCH --mail-type=END,FAIL
 #SBATCH --mail-user=avrilharder@gmail.com
@@ -33,6 +32,7 @@ module load singularity/3.8.4
 ## Download test data
 
 mkdir /scratch/${USER}/${DIR}/
+chmod -R 700 mkdir /scratch/${USER}/${DIR}/
 mkdir /scratch/${USER}/${DIR}/${PROJ1}/
 cd /scratch/${USER}/${DIR}/${PROJ1}/
 
@@ -65,10 +65,10 @@ mkdir data
 nextflow run nf-core/methylseq \
 --input data/krat_ms_samplesheet.csv \
 --outdir results \
---max_cpus 8 \
 --fasta /scratch/avrilh/kratroh_01_assembindex/dspec_genbank_assem.fa \
 --save_reference \
 -resume \
+-c /home/amh0254/krat_roh_analyses/scripts/files/easleyconfig_amh.conf \
 -profile singularity
 
 
