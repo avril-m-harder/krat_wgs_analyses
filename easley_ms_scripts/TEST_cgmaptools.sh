@@ -19,6 +19,7 @@ mkdir /scratch/${USER}/${PROJ}/
 chmod 700 /scratch/${USER}/${PROJ}
 cd /scratch/${USER}/${PROJ}
 
+source /home/amh0254/krat_roh_analyses/scripts/easley_ms_scripts/logging_functions.sh
 
 # -----------------------------------------------------------------------------
 # Copy test data and subset to WGS-filtered contigs
@@ -40,17 +41,21 @@ cd /scratch/${USER}/${PROJ}
 # Create ATCGmap file and run SNP calling (Bayesian)
 # -----------------------------------------------------------------------------
 
+start_logging "Run CGmapTools Bayesian - /scratch/${USER}/${PROJ}/"
+
 cgmaptools convert bam2cgmap \
+--rmOverlap \
 -b 1568.sorted.bam \
 -g /scratch/avrilh/kratroh_01_assembindex/dspec_genbank_assem.fa \
 -o TEST_1568
 
-# cgmaptools snv \
-# -m bayes --bayes-dynamicP \
-# --rmOverlap \
-# -i <ATCGmap> \
-# -v <VCF>
+cgmaptools snv \
+-m bayes \
+--bayes-dynamicP \
+-i TEST_1568.ATCGmap.gz \
+-v TEST_1568_cgmt_bayes.vcf
 
+stop_logging
 
 ## There are two strategies we can use to call SNPs, binomial or bayesian mode. The 
 ## default choice is the binomial mode as it’s faster, but the overall prediction
