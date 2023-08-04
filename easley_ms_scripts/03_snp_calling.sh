@@ -6,6 +6,8 @@
 #SBATCH -n 1
 #SBATCH -t 300:00:00
 #SBATCH --mem=40000
+#SBATCH --output=03_ms_snps-%j.out
+#SBATCH --error=error-03_ms_snps-%j.err
 #SBATCH --mail-type=END,FAIL
 #SBATCH --mail-user=avrilharder@gmail.com
 
