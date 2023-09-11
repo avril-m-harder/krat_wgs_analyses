@@ -1,6 +1,6 @@
 library(scales)
 `%notin%` <- Negate(`%in%`)
-setwd('/Users/Avril/Documents/krat_genetics/qualimap/')
+setwd('/Users/Avril/Documents/krat_genetics/qc_stuff/qualimap/')
 
 ## get contig lengths
 lens <- read.table('GCF_019054845.1_ASM1905484v1_assembly_report.txt')
