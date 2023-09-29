@@ -26,8 +26,8 @@ chmod 700 /scratch/${USER}/${PROJ}
 # -----------------------------------------------------------------------------
 
 module load python/anaconda/3.10.9
-# export CONDA_PKGS_DIRS=~/.conda/pkgs
-# conda create -n revelio
+export CONDA_PKGS_DIRS=~/.conda/pkgs
+conda create -n revelio
 source activate revelio
 conda install -c bioconda pysam
 
